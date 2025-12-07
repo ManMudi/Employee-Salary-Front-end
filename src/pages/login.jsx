@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { login } from "../service/authService"
+import { login, savedLoginUser, storeToken } from "../service/authService"
 
 export const Login=()=>{
 
@@ -10,9 +10,10 @@ const handleSave=()=>{
     const myData={usernameOrEmail,password}
   //   console.log(myData)
     login(myData).then(res=>{
-     console.log(res)
-     const token=res.token;
-     localStorage.setItem('token',token)
+     const token='Bearer '+res.token;
+     storeToken(token)
+     savedLoginUser(usernameOrEmail,res.role)
+     console.log(token)
     })
 }
 

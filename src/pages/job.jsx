@@ -16,9 +16,8 @@ export const Job=()=>{
     }
 
     const loadJobs=()=>{
-        const token=localStorage.getItem('token')
-       // console.log(token)
-        getAllJobs(token).then(res=>{
+        
+        getAllJobs().then(res=>{
             setJobs(res)
         })
     }
